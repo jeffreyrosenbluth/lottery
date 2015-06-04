@@ -1,6 +1,6 @@
 "use strict"
 
-let N = 4;
+let N = 5;
 
 class Box extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class Box extends React.Component {
 
 class Row extends React.Component {
   render() {
-    let boxes = _.map(_.range(N), i => {return (
+    let boxes = _.map(_.range(4), i => {return (
       <Box bgcolor  = {this.props.colors[i]}
            name     = {this.props.names[i]}
            animData = {this.props.anims[i]}
@@ -79,10 +79,14 @@ class Play extends React.Component {
     this.props.onPress();
   }
   render () {
+    let buttonStyle = {outline: 0};
     return (
       <div className="row">
         <div className="col-xs-1">
-          <button type="button" className="btn btn-success btn-lg" id="play"
+          <button type="button"
+                  className="btn btn-success btn-lg"
+                  id="play"
+                  style={buttonStyle}
                   onMouseUp={this.handleChange.bind(this)}>
             Play
           </button>
@@ -109,7 +113,7 @@ class FlipApp extends React.Component {
   constructor(props) {
     super(props);
     let arr = _.fill(Array(4*N),'');
-    let anm = _.fill(Array(4*N), {anime: '', delay: 0});
+    let anm = _.fill(Array(4*N), {anim: '', delay: 0});
     let clrs = _.map(_.range(4*N), () => {
       return ('#' + Math.floor(_.random(0.1,0.9)*16777215).toString(16))
     });
@@ -143,7 +147,6 @@ class FlipApp extends React.Component {
   }
 
   render() {
-
     return (
       <div className='container'>
         <Play onPress={this.handlePlay}/>
