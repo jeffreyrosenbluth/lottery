@@ -90,7 +90,7 @@ class Play extends React.Component {
                   id="play"
                   style={buttonStyle}
                   onMouseUp={this.handleChange.bind(this)}>
-            Play
+            Play / Replay
           </button>
         </div>
       </div>
@@ -114,12 +114,12 @@ let winner =
 class FlipApp extends React.Component {
   constructor(props) {
     super(props);
-    let arr = _.fill(Array(4*N),'');
-    let anm = _.fill(Array(4*N), {anim: '', delay: 0});
-    let clrs = _.map(_.range(4*N), () => {
-      return ('#' + Math.floor(_.random(0.1,0.9)*16777215).toString(16))
+    let initialNames = _.fill(Array(4*N),'');
+    let initialAnims = _.fill(Array(4*N), {anim: '', delay: 0});
+    let cellColors   = _.map(_.range(4*N), () => {
+      return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
-    this.state = {names: arr, anims: anm, clrs: clrs};
+    this.state = {names: initialNames, anims: initialAnims, cellColors: cellColors};
     this.handleName = this.handleName.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
   }
@@ -135,6 +135,7 @@ class FlipApp extends React.Component {
     let [alive, dead] = _.partition(_.range(4*N), n => names[n]);
     alive = _.shuffle(alive);
     dead = _.shuffle(dead);
+
     let animMix = _.shuffle(animations);
     let winnerAnims = _.shuffle(winner)
     let boxAnims = [];
@@ -145,6 +146,7 @@ class FlipApp extends React.Component {
     for (let i = 0; i < dead.length; i++) {
       boxAnims[dead[i]] = {anim: 'fadeOut', delay: 0};
     }
+    this.setState({anims: this.state.anims})
     this.setState({anims: boxAnims});
   }
 
@@ -152,7 +154,7 @@ class FlipApp extends React.Component {
     return (
       <div className='container'>
         <Play onPress={this.handlePlay}/>
-        <Table colors={this.state.clrs} names={this.state.names} anims={this.state.anims}/>
+        <Table colors={this.state.cellColors} names={this.state.names} anims={this.state.anims}/>
         <Players onUserInput={this.handleName}/>
       </div>
     );
