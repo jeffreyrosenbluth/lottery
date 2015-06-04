@@ -1,0 +1,18 @@
+[class*="col-"] {
+  padding-top: 45px;
+  padding-bottom: 15px;
+  text-align: center;
+  font-family: Helvetica, Arial;
+  font-weight: Bold;
+  font-size: 2vw;
+  height: 120px;
+  color: white;
+}
+
+.form-group {
+    margin-bottom: 4px;
+}
+
+.col-xs-offset-1 {
+    margin-left: 3%;
+}
