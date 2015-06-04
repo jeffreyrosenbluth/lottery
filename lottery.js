@@ -51,7 +51,7 @@ class Player extends React.Component {
     return (
       <div className       = "form-group">
         <input className   = "form-control" type="text"
-               placeholder = {'Player ' + this.props.num}
+               placeholder = {'Player ' + ( 1 + this.props.num)}
                id          = {this.props.num}
                ref         = "textInput"
                onChange    = {this.handleChange.bind(this)}
@@ -79,12 +79,12 @@ class Play extends React.Component {
     this.props.onPress();
   }
   render () {
-    let buttonStyle = {outline: 0};
+    let buttonStyle = {outline: 0, backgroundColor: 'lightgray'};
     return (
       <div className="row">
         <div className="col-xs-1">
           <button type="button"
-                  className="btn btn-success btn-lg"
+                  className="btn btn-default btn-lg"
                   id="play"
                   style={buttonStyle}
                   onMouseUp={this.handleChange.bind(this)}>
@@ -138,7 +138,7 @@ class FlipApp extends React.Component {
     let boxAnims = [];
     boxAnims[alive[alive.length -1]] = {anim: winnerAnims[0], delay: 2 * alive.length + 's'};
     for (let i = 0; i < (alive.length - 1); i++) {
-      boxAnims[alive[i]] = {anim: animMix[i], delay: 2 + 2 * i + 's'};
+      boxAnims[alive[i]] = {anim: animMix[i % 31], delay: 2 + 2 * i + 's'};
     }
     for (let i = 0; i < dead.length; i++) {
       boxAnims[dead[i]] = {anim: 'fadeOut', delay: 0};
