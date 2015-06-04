@@ -7,7 +7,6 @@
   font-size: 2vw;
   height: 120px;
   color: white;
-  border-style: solid;
 }
 
 .form-group {
@@ -16,4 +15,17 @@
 
 .col-xs-offset-1 {
     margin-left: 3%;
+}
+
+.navbar-custom {
+    background-color: rgb(40, 10, 10);
+}
+
+body {
+  background: no-repeat center center fixed;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(Lottery-Balls-014.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

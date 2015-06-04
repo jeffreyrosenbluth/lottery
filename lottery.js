@@ -48,6 +48,7 @@ class Player extends React.Component {
   }
 
   render() {
+    let inputStyle = {backgroundColor: 'rgb(200,200,200)'};
     return (
       <div className       = "form-group">
         <input className   = "form-control" type="text"
@@ -55,6 +56,7 @@ class Player extends React.Component {
                id          = {this.props.num}
                ref         = "textInput"
                onChange    = {this.handleChange.bind(this)}
+               style        = {inputStyle}
         />
       </div>
     );
