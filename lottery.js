@@ -44,7 +44,8 @@ class Table extends React.Component {
 
 class Player extends React.Component {
   handleChange() {
-    this.props.onUserInput(this.props.num, this.refs.textInput.getDOMNode().value);
+    this.props.onUserInput(this.props.num,
+    React.findDOMNode(this.refs.textInput).value);
   }
 
   render() {
