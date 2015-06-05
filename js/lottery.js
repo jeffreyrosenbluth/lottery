@@ -4,7 +4,7 @@
 
 'use strict';
 
-let N = 5;
+let N = 4;
 
 class Box extends React.Component {
   render() {
