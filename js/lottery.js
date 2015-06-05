@@ -1,4 +1,8 @@
-"use strict"
+/**
+ * @jsx React.DOM
+ */
+
+'use strict';
 
 let N = 5;
 
