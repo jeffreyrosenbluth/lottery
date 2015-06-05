@@ -129,12 +129,12 @@ let winner =
 class LotteryApp extends React.Component {
   constructor(props) {
     super(props);
-    let initialNames = _.fill(Array(4*N),'');
-    let initialAnims = _.fill(Array(4*N), {anim: '', delay: '0s'});
     let cellColors   = _.map(_.range(4*N), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
-    this.state = {names: initialNames, anims: initialAnims, cellColors: cellColors};
+    this.state = { names: _.fill(Array(4*N),''),
+                   anims: _.fill(Array(4*N), {anim: '', delay: '0s'}),
+                   cellColors: cellColors };
     this.handleName = this.handleName.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleReset = this.handleReset.bind(this);

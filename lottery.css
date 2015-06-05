@@ -21,6 +21,15 @@
     background-color: rgb(40, 10, 10);
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: rgb(40, 10, 10);
+}
+
 body {
   background: no-repeat center center fixed;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(Lottery-Balls-014.jpg);
