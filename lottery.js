@@ -130,27 +130,25 @@ let winner =
 class LotteryApp extends React.Component {
   constructor(props) {
     super(props);
+    let anims = _.fill(Array(4*N), {anim: '', delay: '0s'});
     let cellColors   = _.map(_.range(4*N), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
-    this.state = { names: _.fill(Array(4*N),''),
-                   anims: _.fill(Array(4*N), {anim: '', delay: '0s'}),
-                   cellColors: cellColors };
+    this.state = {names: [], anims: anims, cellColors: cellColors};
     this.handleName = this.handleName.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
 
   handleName(i, name) {
-    let arr = this.state.names;
+    let arr = this.state.names.slice();
     arr[i] = name;
     this.setState({names: arr});
   }
 
   handleReset() {
-    let emptyNames = _.fill(Array(4*N),'');
     let emptyAnims = _.fill(Array(4*N), {anim: '', delay: '0s'});
-    this.setState({names: emptyNames, anims: emptyAnims});
+    this.setState({names: [], anims: emptyAnims});
   }
 
   handlePlay() {
