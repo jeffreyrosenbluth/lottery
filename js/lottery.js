@@ -8,21 +8,21 @@ var N = 4;
 
 class Box extends React.Component {
   render() {
-    let divStyle =
+    var divStyle =
       { backgroundColor:          this.props.bgcolor,
         WebkitAnimationDelay:     this.props.name ? this.props.animData.delay : '0s',
         animationDelay:           this.props.name ? this.props.animData.delay : '0s',
         WebkitAnimationDuration: '2s',
         animationDuration:       '2s'
       };
-    let classes = "col-xs-3 animated " + this.props.animData.anim;
+    var classes = "col-xs-3 animated " + this.props.animData.anim;
     return (<div className={classes} style={divStyle}>{this.props.name}</div>);
   }
 };
 
 class Row extends React.Component {
   render() {
-    let boxes = _.map(_.range(4), i => {return (
+    var boxes = _.map(_.range(4), i => {return (
       <Box bgcolor  = {this.props.colors[i]}
            name     = {this.props.names[i]}
            animData = {this.props.anims[i]}
@@ -35,7 +35,7 @@ class Row extends React.Component {
 
 class Table extends React.Component {
   render() {
-    let rows = _.map(_.range(N), i => {return (
+    var rows = _.map(_.range(N), i => {return (
       <Row colors = {this.props.colors.slice(4*i, 4*i + 4)}
            names  = {this.props.names.slice(4*i, 4*i + 4)}
            anims  = {this.props.anims.slice(4*i, 4*i + 4)}
@@ -53,7 +53,7 @@ class Player extends React.Component {
   }
 
   render() {
-    let inputStyle = {backgroundColor: 'rgb(200,200,200)'};
+    var inputStyle = {backgroundColor: 'rgb(200,200,200)'};
     return (
       <div className       = "form-group">
         <input className   = "form-control" type="text"
@@ -71,7 +71,7 @@ class Player extends React.Component {
 
 class Players extends React.Component {
   render() {
-    let players = _.map(_.range(4*N), n => {return (
+    var players = _.map(_.range(4*N), n => {return (
       <Player key={n} num={n} name={this.props.names[n]} onUserInput={this.props.onUserInput}/>
     );});
     return (
@@ -92,7 +92,7 @@ class Play extends React.Component {
   }
 
   render () {
-    let buttonStyle = {outline: 0, backgroundColor: 'lightgray'};
+    var buttonStyle = {outline: 0, backgroundColor: 'lightgray'};
     return (
       <div className="row">
         <div className="col-xs-2">
@@ -118,7 +118,7 @@ class Play extends React.Component {
   }
 }
 
-let animations =
+var animations =
   [ 'bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp',
     'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig',
     'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig',
@@ -128,14 +128,14 @@ let animations =
     'slideOutDown', 'slideOutLeft', 'slideOutRight', 'slideOutUp'
   ];
 
-let winner =
+var winner =
   ['bounce', 'flash', 'flip', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'];
 
 class LotteryApp extends React.Component {
   constructor(props) {
     super(props);
-    let anims = _.fill(Array(4*N), {anim: '', delay: '0s'});
-    let cellColors   = _.map(_.range(4*N), () => {
+    var anims = _.fill(Array(4*N), {anim: '', delay: '0s'});
+    var cellColors   = _.map(_.range(4*N), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
     this.state = {names: [], anims: anims, cellColors: cellColors};
@@ -145,30 +145,30 @@ class LotteryApp extends React.Component {
   }
 
   handleName(i, name) {
-    let arr = this.state.names.slice();
+    var arr = this.state.names.slice();
     arr[i] = name;
     this.setState({names: arr});
   }
 
   handleReset() {
-    let emptyAnims = _.fill(Array(4*N), {anim: '', delay: '0s'});
+    var emptyAnims = _.fill(Array(4*N), {anim: '', delay: '0s'});
     this.setState({names: [], anims: emptyAnims});
   }
 
   handlePlay() {
-    let names = this.state.names;
-    let [alive, dead] = _.partition(_.range(4*N), n => names[n]);
+    var names = this.state.names;
+    var [alive, dead] = _.partition(_.range(4*N), n => names[n]);
     alive = _.shuffle(alive);
     dead  = _.shuffle(dead);
 
-    let animMix = _.shuffle(animations);
-    let winnerAnims = _.shuffle(winner)
-    let boxAnims = [];
+    var animMix = _.shuffle(animations);
+    var winnerAnims = _.shuffle(winner)
+    var boxAnims = [];
     boxAnims[alive[alive.length -1]] = {anim: winnerAnims[0], delay: 2 * alive.length + 's'};
-    for (let i = 0; i < (alive.length - 1); i++) {
+    for (var i = 0; i < (alive.length - 1); i++) {
       boxAnims[alive[i]] = {anim: animMix[i % 31], delay: 2 + 2 * i + 's'};
     }
-    for (let i = 0; i < dead.length; i++) {
+    for (var i = 0; i < dead.length; i++) {
       boxAnims[dead[i]] = {anim: 'fadeOut', delay: '0s'};
     }
     this.setState({anims: this.state.anims})
