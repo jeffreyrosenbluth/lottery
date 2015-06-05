@@ -6,8 +6,8 @@ class Box extends React.Component {
   render() {
     let divStyle =
       { backgroundColor:          this.props.bgcolor,
-        WebkitAnimationDelay:     this.props.name ? this.props.animData.delay : '0',
-        animationDelay:           this.props.name ? this.props.animData.delay : '0',
+        WebkitAnimationDelay:     this.props.name ? this.props.animData.delay : '0s',
+        animationDelay:           this.props.name ? this.props.animData.delay : '0s',
         WebkitAnimationDuration: '2s',
         animationDuration:       '2s'
       };
@@ -55,8 +55,9 @@ class Player extends React.Component {
                placeholder = {'Player ' + ( 1 + this.props.num)}
                id          = {this.props.num}
                ref         = "textInput"
+               value       = {this.props.name}
                onChange    = {this.handleChange.bind(this)}
-               style        = {inputStyle}
+               style       = {inputStyle}
         />
       </div>
     );
@@ -66,7 +67,7 @@ class Player extends React.Component {
 class Players extends React.Component {
   render() {
     let players = _.map(_.range(4*N), n => {return (
-      <Player key={n} num={n} onUserInput={this.props.onUserInput}/>
+      <Player key={n} num={n} name={this.props.names[n]} onUserInput={this.props.onUserInput}/>
     );});
     return (
       <div className="col-xs-2 col-xs-offset-1">
@@ -77,20 +78,34 @@ class Players extends React.Component {
 };
 
 class Play extends React.Component {
-  handleChange() {
+  handlePlay() {
     this.props.onPress();
   }
+
+  handleReset() {
+    this.props.onReset();
+  }
+
   render () {
     let buttonStyle = {outline: 0, backgroundColor: 'lightgray'};
     return (
       <div className="row">
-        <div className="col-xs-1">
+        <div className="col-xs-2">
           <button type="button"
                   className="btn btn-default btn-lg"
                   id="play"
                   style={buttonStyle}
-                  onMouseUp={this.handleChange.bind(this)}>
+                  onMouseUp={this.handlePlay.bind(this)}>
             Play / Replay
+          </button>
+        </div>
+          <div className="col-xs-2">
+            <button type="button"
+                    className="btn btn-default btn-lg"
+                    id="reset"
+                    style={buttonStyle}
+                    onMouseUp={this.handleReset.bind(this)}>
+              Reset
           </button>
         </div>
       </div>
@@ -111,17 +126,18 @@ let animations =
 let winner =
   ['bounce', 'flash', 'flip', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'];
 
-class FlipApp extends React.Component {
+class LotteryApp extends React.Component {
   constructor(props) {
     super(props);
     let initialNames = _.fill(Array(4*N),'');
-    let initialAnims = _.fill(Array(4*N), {anim: '', delay: 0});
+    let initialAnims = _.fill(Array(4*N), {anim: '', delay: '0s'});
     let cellColors   = _.map(_.range(4*N), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
     this.state = {names: initialNames, anims: initialAnims, cellColors: cellColors};
     this.handleName = this.handleName.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleName(i, name) {
@@ -130,11 +146,17 @@ class FlipApp extends React.Component {
     this.setState({names: arr});
   }
 
+  handleReset() {
+    let emptyNames = _.fill(Array(4*N),'');
+    let emptyAnims = _.fill(Array(4*N), {anim: '', delay: '0s'});
+    this.setState({names: emptyNames, anims: emptyAnims});
+  }
+
   handlePlay() {
     let names = this.state.names;
     let [alive, dead] = _.partition(_.range(4*N), n => names[n]);
     alive = _.shuffle(alive);
-    dead = _.shuffle(dead);
+    dead  = _.shuffle(dead);
 
     let animMix = _.shuffle(animations);
     let winnerAnims = _.shuffle(winner)
@@ -144,7 +166,7 @@ class FlipApp extends React.Component {
       boxAnims[alive[i]] = {anim: animMix[i % 31], delay: 2 + 2 * i + 's'};
     }
     for (let i = 0; i < dead.length; i++) {
-      boxAnims[dead[i]] = {anim: 'fadeOut', delay: 0};
+      boxAnims[dead[i]] = {anim: 'fadeOut', delay: '0s'};
     }
     this.setState({anims: this.state.anims})
     this.setState({anims: boxAnims});
@@ -153,12 +175,12 @@ class FlipApp extends React.Component {
   render() {
     return (
       <div className='container'>
-        <Play onPress={this.handlePlay}/>
+        <Play onPress={this.handlePlay} onReset={this.handleReset}/>
         <Table colors={this.state.cellColors} names={this.state.names} anims={this.state.anims}/>
-        <Players onUserInput={this.handleName}/>
+        <Players names={this.state.names} onUserInput={this.handleName}/>
       </div>
     );
   }
 };
 
-React.render(<FlipApp />, document.getElementById('content'));
+React.render(<LotteryApp />, document.getElementById('content'));
