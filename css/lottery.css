@@ -24,9 +24,9 @@
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 50%;
   height: 80px;
-  background-color: rgb(40, 10, 10);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 body {
