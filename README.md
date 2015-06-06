@@ -1,6 +1,6 @@
 # Lottery
 
-[Play](https://github.com/jeffreyrosenbluth/lottery/index.html)
+[Play](http://jeffreyrosenbluth.github.io/lottery/)
 
   - Add players to the input fields on the right.
   - Play: eliminates all but one player at random.
