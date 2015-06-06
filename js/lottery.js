@@ -53,7 +53,7 @@ class Player extends React.Component {
   }
 
   render() {
-    var inputStyle = {backgroundColor: 'rgb(200,200,200)'};
+    var inputStyle = {backgroundColor: 'transparent', color: 'white'};
     return (
       <div className       = "form-group">
         <input className   = "form-control" type="text"
@@ -92,19 +92,19 @@ class Play extends React.Component {
   }
 
   render () {
-    var buttonStyle = {outline: 0, backgroundColor: 'lightgray'};
+    var buttonStyle = {outline: 0, color : 'white', backgroundColor: 'transparent'};
     return (
       <div className="row">
-        <div className="col-xs-2">
+        <div className="col-xs-1">
           <button type="button"
                   className="btn btn-default btn-lg"
                   id="play"
                   style={buttonStyle}
                   onMouseUp={this.handlePlay.bind(this)}>
-            Play / Replay
+            Play - Replay
           </button>
         </div>
-          <div className="col-xs-2">
+          <div className="col-xs-1 col-xs-offset-7">
             <button type="button"
                     className="btn btn-default btn-lg"
                     id="reset"
@@ -127,9 +127,6 @@ var animations =
     'rollOut', 'zoomOut', 'zoomOutDown', 'zoomOutRight', 'zoomOutUp',
     'slideOutDown', 'slideOutLeft', 'slideOutRight', 'slideOutUp'
   ];
-
-var winner =
-  ['bounce', 'flash', 'flip', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'];
 
 class LotteryApp extends React.Component {
   constructor(props) {
@@ -162,9 +159,8 @@ class LotteryApp extends React.Component {
     dead  = _.shuffle(dead);
 
     var animMix = _.shuffle(animations);
-    var winnerAnims = _.shuffle(winner)
     var boxAnims = [];
-    boxAnims[alive[alive.length -1]] = {anim: winnerAnims[0], delay: 2 * alive.length + 's'};
+    boxAnims[alive[alive.length -1]] = {anim: 'tada', delay: 2 * alive.length + 's'};
     for (var i = 0; i < (alive.length - 1); i++) {
       boxAnims[alive[i]] = {anim: animMix[i % 31], delay: 2 + 2 * i + 's'};
     }
@@ -178,6 +174,7 @@ class LotteryApp extends React.Component {
   render() {
     return (
       <div className='container'>
+        <h1>Lottery</h1>
         <Play onPress={this.handlePlay} onReset={this.handleReset}/>
         <Table colors={this.state.cellColors} names={this.state.names} anims={this.state.anims}/>
         <Players names={this.state.names} onUserInput={this.handleName}/>
