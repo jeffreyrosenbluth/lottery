@@ -1,8 +1,8 @@
-# lottery
-Randomly select a player
+# Lottery
+  - Add players to the input fields on the right.
+  - Press <Play - Replay> to eliminate all but one player at random.
+  - Press <Play - Replay> to play again with the same players.
+  - Press <Reset> to clear all players.
+  - You can add or remove players at any time without resetting.
 
-## To do:
-  - [X] Remove in-browser JSX transformer.
-  - [X] Add Reset button.
-  - [X] Add Replay button.
-  - [ ] Add number of players field.
+Build with reacjs, bootstrap and lodash.
