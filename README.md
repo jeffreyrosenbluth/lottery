@@ -8,7 +8,7 @@
   - Reset: clears all players.
   - You can add or remove players at any time without resetting.
 
-# Libraries
+## Libraries used
   - ReactJS v0.13.3
   - Bootstrap v3.3.2
   - lodash v3.9.3
