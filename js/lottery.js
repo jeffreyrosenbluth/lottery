@@ -131,8 +131,8 @@ class LotteryApp extends React.Component {
     var cellColors = _.map(_.range(4*N), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
-
-    this.state = {names: [], anims: anims, cellColors: cellColors};
+    this.clrs = cellColors;
+    this.state = {names: [], anims: anims};
     this.handleName = this.handleName.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleReset = this.handleReset.bind(this);
@@ -188,7 +188,7 @@ class LotteryApp extends React.Component {
       <div className='container'>
         <h1>Lottery</h1>
         <Play onPress={this.handlePlay} onReset={this.handleReset}/>
-        <Table colors={this.state.cellColors} names={this.state.names} anims={this.state.anims}/>
+        <Table colors={this.clrs} names={this.state.names} anims={this.state.anims}/>
         <Players names={this.state.names} onUserInput={this.handleName}/>
       </div>
     );
