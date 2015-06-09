@@ -4,7 +4,14 @@
 
 'use strict';
 
-var N = 4;
+function round4(m) {
+  var n = Math.floor(m);
+  var rem = n % 4;
+  if (rem === 0) {
+    return n;
+  }
+  return n + 4 - rem;
+};
 
 class Box extends React.Component {
   render() {
@@ -37,7 +44,7 @@ class Row extends React.Component {
 
 class Table extends React.Component {
   render() {
-    var rows = _.map(_.range(N), i => {return (
+    var rows = _.map(_.range(this.props.numPlayers / 4), i => {return (
       <Row colors = {this.props.colors.slice(4*i, 4*i + 4)}
            names  = {this.props.names.slice(4*i, 4*i + 4)}
            anims  = {this.props.anims.slice(4*i, 4*i + 4)}
@@ -46,6 +53,32 @@ class Table extends React.Component {
     );});
 
     return (<div className="col-xs-9">{rows}</div>);
+  }
+};
+
+class NumPlayers extends React.Component {
+  handleChange() {
+    this.props.onChange(React.findDOMNode(this.refs.numPlayers).value);
+  }
+
+  render() {
+    var inputStyle = { backgroundColor: 'transparent',
+                       color: 'white',
+                       height: '45px',
+                       width:  '90px'};
+
+    return (
+      <div className       = "form-group">
+        <input className   = "form-control" type="text"
+               placeholder = "16"
+               id          = "num"
+               ref         = "numPlayers"
+               value       = {this.props.numPlayers}
+               onChange    = {this.handleChange.bind(this)}
+               style       = {inputStyle}
+        />
+      </div>
+    );
   }
 };
 
@@ -75,7 +108,7 @@ class Player extends React.Component {
 
 class Players extends React.Component {
   render() {
-    var players = _.map(_.range(4*N), n => {return (
+    var players = _.map(_.range(this.props.numPlayers), n => {return (
       <Player key={n} num={n} name={this.props.names[n]} onUserInput={this.props.onUserInput}/>
     );});
 
@@ -101,7 +134,7 @@ class Play extends React.Component {
 
     return (
       <div className="row">
-        <div className="col-xs-1">
+        <div className="col-xs-2">
           <button type="button"
                   className="btn btn-default btn-lg"
                   id="play"
@@ -110,16 +143,21 @@ class Play extends React.Component {
             Play - Replay
           </button>
         </div>
-          <div className="col-xs-1 col-xs-offset-7">
-            <button type="button"
-                    className="btn btn-default btn-lg"
-                    id="reset"
-                    style={buttonStyle}
-                    onMouseUp={this.handleReset.bind(this)}>
-              Reset
+        <div className="col-xs-2">
+          <button type="button"
+                  className="btn btn-default btn-lg"
+                  id="reset"
+                  style={buttonStyle}
+                  onMouseUp={this.handleReset.bind(this)}>
+            Reset
           </button>
         </div>
-      </div>
+        <div className="col-xs-2">
+          <form id="numPlayers">
+            <NumPlayers numPlayers={this.props.numPlayers} onChange={this.props.onNum}/>
+          </form>
+        </div>
+    </div>
     );
   }
 };
@@ -127,15 +165,20 @@ class Play extends React.Component {
 class LotteryApp extends React.Component {
   constructor(props) {
     super(props);
-    var anims = _.fill(Array(4*N), {anim: '', delay: '0s'});
-    var cellColors = _.map(_.range(4*N), () => {
+    var anims = _.fill(Array(100), {anim: '', delay: '0s'});
+    var cellColors = _.map(_.range(100), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
-    this.clrs = cellColors;
-    this.state = {names: [], anims: anims};
-    this.handleName = this.handleName.bind(this);
-    this.handlePlay = this.handlePlay.bind(this);
+    this.cellColors = cellColors;
+    this.state = {names: [], anims: anims, numPlayers: 16};
+    this.handleNum   = this.handleNum.bind(this);
+    this.handleName  = this.handleName.bind(this);
+    this.handlePlay  = this.handlePlay.bind(this);
     this.handleReset = this.handleReset.bind(this);
+  }
+
+  handleNum(n) {
+    this.setState({numPlayers: n});
   }
 
   handleName(i, name) {
@@ -146,13 +189,14 @@ class LotteryApp extends React.Component {
   }
 
   handleReset() {
-    var emptyAnims = _.fill(Array(4*N), {anim: '', delay: '0s'});
+    var emptyAnims = _.fill(Array(100), {anim: '', delay: '0s'});
     this.setState({names: [], anims: emptyAnims});
   }
 
   handlePlay() {
+    var numPlayers = round4(this.state.numPlayers);
     var names = this.state.names;
-    var [alive, dead] = _.partition(_.range(4*N), n => names[n]);
+    var [alive, dead] = _.partition(_.range(numPlayers), n => names[n]);
     var animations =
       [ 'bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp',
         'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig',
@@ -184,12 +228,13 @@ class LotteryApp extends React.Component {
   }
 
   render() {
+    var numPlayers = round4(this.state.numPlayers);
     return (
       <div className='container'>
         <h1>Lottery</h1>
-        <Play onPress={this.handlePlay} onReset={this.handleReset}/>
-        <Table colors={this.clrs} names={this.state.names} anims={this.state.anims}/>
-        <Players names={this.state.names} onUserInput={this.handleName}/>
+        <Play onPress={this.handlePlay} onReset={this.handleReset} numPlayers={this.state.numPlayers} onNum={this.handleNum}/>
+        <Table colors={this.cellColors} names={this.state.names} anims={this.state.anims} numPlayers={numPlayers}/>
+        <Players names={this.state.names} onUserInput={this.handleName} numPlayers={numPlayers}/>
       </div>
     );
   }
