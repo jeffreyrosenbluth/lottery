@@ -165,7 +165,7 @@ class Play extends React.Component {
 class LotteryApp extends React.Component {
   constructor(props) {
     super(props);
-    var anims = _.fill(Array(100), {anim: '', delay: '0s'});
+    var anims = _.fill(Array(16), {anim: '', delay: '0s'});
     var cellColors = _.map(_.range(100), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
@@ -178,18 +178,18 @@ class LotteryApp extends React.Component {
   }
 
   handleNum(n) {
-    this.setState({numPlayers: n});
+    var emptyAnims = _.fill(Array(round4(n)), {anim: '', delay: '0s'});
+    this.setState({numPlayers: n, anims: emptyAnims});
   }
 
   handleName(i, name) {
     var arr = this.state.names.slice();
-
     arr[i] = name;
     this.setState({names: arr});
   }
 
   handleReset() {
-    var emptyAnims = _.fill(Array(100), {anim: '', delay: '0s'});
+    var emptyAnims = _.fill(Array(round4(this.state.numPlayers)), {anim: '', delay: '0s'});
     this.setState({names: [], anims: emptyAnims});
   }
 
