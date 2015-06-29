@@ -4,15 +4,6 @@
 
 'use strict';
 
-function round4(m) {
-  var n = Math.floor(m);
-  var rem = n % 4;
-  if (rem === 0) {
-    return n;
-  }
-  return n + 4 - rem;
-};
-
 class Box extends React.Component {
   render() {
     var divStyle =
@@ -58,24 +49,19 @@ class Table extends React.Component {
 
 class NumPlayers extends React.Component {
   handleChange() {
-    this.props.onChange(React.findDOMNode(this.refs.numPlayers).value);
+    this.props.onChange(4 * React.findDOMNode(this.refs.numPlayers).value);
   }
 
   render() {
-    var inputStyle = { backgroundColor: 'transparent',
-                       color: 'white',
-                      //  height: '45px',
-                      //  width:  '90px'
-                       };
+    var inputStyle = {backgroundColor: 'transparent', color: 'white'};
 
     return (
       <div className       = "form-group">
-        <label for="rows">Rows</label>
-        <input className   = "form-control" type="text" id="rows"
-               placeholder = "16"
+        <input className   = "form-control" type="text"
+               placeholder = "4"
                id          = "num"
                ref         = "numPlayers"
-               value       = {this.props.numPlayers}
+               value       = {this.props.numPlayers / 4}
                onChange    = {this.handleChange.bind(this)}
                style       = {inputStyle}
         />
@@ -154,7 +140,10 @@ class Play extends React.Component {
             Reset
           </button>
         </div>
-        <div className="col-xs-offset-4 col-xs-1">
+        <div className="col-xs-offset-3 col-xs-1">
+          <p>Rows:</p>
+        </div>
+        <div className="col-xs-1">
           <form id="numPlayers">
             <NumPlayers numPlayers={this.props.numPlayers} onChange={this.props.onNum}/>
           </form>
@@ -180,9 +169,8 @@ class LotteryApp extends React.Component {
   }
 
   handleNum(n) {
-    var n4 = round4(n)
-    var emptyAnims = _.fill(Array(n4), {anim: '', delay: '0s'});
-    var cellColors = _.map(_.range(n4), () => {
+    var emptyAnims = _.fill(Array(n), {anim: '', delay: '0s'});
+    var cellColors = _.map(_.range(n), () => {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
     });
     this.setState({numPlayers: n, anims: emptyAnims});
@@ -196,12 +184,12 @@ class LotteryApp extends React.Component {
   }
 
   handleReset() {
-    var emptyAnims = _.fill(Array(round4(this.state.numPlayers)), {anim: '', delay: '0s'});
+    var emptyAnims = _.fill(Array(this.state.numPlayers), {anim: '', delay: '0s'});
     this.setState({names: [], anims: emptyAnims});
   }
 
   handlePlay() {
-    var numPlayers = round4(this.state.numPlayers);
+    var numPlayers = this.state.numPlayers;
     var names = this.state.names;
     var [alive, dead] = _.partition(_.range(numPlayers), n => names[n]);
     var animations =
@@ -235,7 +223,7 @@ class LotteryApp extends React.Component {
   }
 
   render() {
-    var numPlayers = round4(this.state.numPlayers);
+    var numPlayers = this.state.numPlayers;
     return (
       <div className='container'>
         <h1>Lottery</h1>
