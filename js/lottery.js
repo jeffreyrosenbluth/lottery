@@ -180,9 +180,8 @@ class Help extends React.Component {
                     Press Play again for a new game with the same players.
                     You can add or remove players before starting the game.
                     To change the maximum number of players increase the
-                    number of rows,
-                    4 players per row.
-                    Press Reset to clear the player names.
+                    number of rows, 4 players per row.
+                    Press Reset to clear the player names and start over.
                   </h4>
                 </div>
                 <div className="modal-footer">

@@ -4,7 +4,7 @@
 
 'use strict';
 
-var ____ClasseK=React.Component;for(var ____ClasseK____Key in ____ClasseK){if(____ClasseK.hasOwnProperty(____ClasseK____Key)){Box[____ClasseK____Key]=____ClasseK[____ClasseK____Key];}}var ____SuperProtoOf____ClasseK=____ClasseK===null?null:____ClasseK.prototype;Box.prototype=Object.create(____SuperProtoOf____ClasseK);Box.prototype.constructor=Box;Box.__superConstructor__=____ClasseK;function Box(){if(____ClasseK!==null){____ClasseK.apply(this,arguments);}}
+var ____Classf2=React.Component;for(var ____Classf2____Key in ____Classf2){if(____Classf2.hasOwnProperty(____Classf2____Key)){Box[____Classf2____Key]=____Classf2[____Classf2____Key];}}var ____SuperProtoOf____Classf2=____Classf2===null?null:____Classf2.prototype;Box.prototype=Object.create(____SuperProtoOf____Classf2);Box.prototype.constructor=Box;Box.__superConstructor__=____Classf2;function Box(){if(____Classf2!==null){____Classf2.apply(this,arguments);}}
   Object.defineProperty(Box.prototype,"render",{writable:true,configurable:true,value:function() {
     var divStyle =
       { backgroundColor:          this.props.bgcolor,
@@ -19,7 +19,7 @@ var ____ClasseK=React.Component;for(var ____ClasseK____Key in ____ClasseK){if(__
   }});
 ;
 
-var ____ClasseL=React.Component;for(var ____ClasseL____Key in ____ClasseL){if(____ClasseL.hasOwnProperty(____ClasseL____Key)){Row[____ClasseL____Key]=____ClasseL[____ClasseL____Key];}}var ____SuperProtoOf____ClasseL=____ClasseL===null?null:____ClasseL.prototype;Row.prototype=Object.create(____SuperProtoOf____ClasseL);Row.prototype.constructor=Row;Row.__superConstructor__=____ClasseL;function Row(){if(____ClasseL!==null){____ClasseL.apply(this,arguments);}}
+var ____Classf3=React.Component;for(var ____Classf3____Key in ____Classf3){if(____Classf3.hasOwnProperty(____Classf3____Key)){Row[____Classf3____Key]=____Classf3[____Classf3____Key];}}var ____SuperProtoOf____Classf3=____Classf3===null?null:____Classf3.prototype;Row.prototype=Object.create(____SuperProtoOf____Classf3);Row.prototype.constructor=Row;Row.__superConstructor__=____Classf3;function Row(){if(____Classf3!==null){____Classf3.apply(this,arguments);}}
   Object.defineProperty(Row.prototype,"render",{writable:true,configurable:true,value:function() {
     var boxes = _.map(_.range(4), function(i)  {return (
       React.createElement(Box, {bgcolor: this.props.colors[i], 
@@ -33,7 +33,7 @@ var ____ClasseL=React.Component;for(var ____ClasseL____Key in ____ClasseL){if(__
   }});
 ;
 
-var ____ClasseM=React.Component;for(var ____ClasseM____Key in ____ClasseM){if(____ClasseM.hasOwnProperty(____ClasseM____Key)){Table[____ClasseM____Key]=____ClasseM[____ClasseM____Key];}}var ____SuperProtoOf____ClasseM=____ClasseM===null?null:____ClasseM.prototype;Table.prototype=Object.create(____SuperProtoOf____ClasseM);Table.prototype.constructor=Table;Table.__superConstructor__=____ClasseM;function Table(){if(____ClasseM!==null){____ClasseM.apply(this,arguments);}}
+var ____Classf4=React.Component;for(var ____Classf4____Key in ____Classf4){if(____Classf4.hasOwnProperty(____Classf4____Key)){Table[____Classf4____Key]=____Classf4[____Classf4____Key];}}var ____SuperProtoOf____Classf4=____Classf4===null?null:____Classf4.prototype;Table.prototype=Object.create(____SuperProtoOf____Classf4);Table.prototype.constructor=Table;Table.__superConstructor__=____Classf4;function Table(){if(____Classf4!==null){____Classf4.apply(this,arguments);}}
   Object.defineProperty(Table.prototype,"render",{writable:true,configurable:true,value:function() {
     var rows = _.map(_.range(this.props.numPlayers / 4), function(i)  {return (
       React.createElement(Row, {colors: this.props.colors.slice(4*i, 4*i + 4), 
@@ -47,7 +47,7 @@ var ____ClasseM=React.Component;for(var ____ClasseM____Key in ____ClasseM){if(__
   }});
 ;
 
-var ____ClasseN=React.Component;for(var ____ClasseN____Key in ____ClasseN){if(____ClasseN.hasOwnProperty(____ClasseN____Key)){NumPlayers[____ClasseN____Key]=____ClasseN[____ClasseN____Key];}}var ____SuperProtoOf____ClasseN=____ClasseN===null?null:____ClasseN.prototype;NumPlayers.prototype=Object.create(____SuperProtoOf____ClasseN);NumPlayers.prototype.constructor=NumPlayers;NumPlayers.__superConstructor__=____ClasseN;function NumPlayers(){if(____ClasseN!==null){____ClasseN.apply(this,arguments);}}
+var ____Classf5=React.Component;for(var ____Classf5____Key in ____Classf5){if(____Classf5.hasOwnProperty(____Classf5____Key)){NumPlayers[____Classf5____Key]=____Classf5[____Classf5____Key];}}var ____SuperProtoOf____Classf5=____Classf5===null?null:____Classf5.prototype;NumPlayers.prototype=Object.create(____SuperProtoOf____Classf5);NumPlayers.prototype.constructor=NumPlayers;NumPlayers.__superConstructor__=____Classf5;function NumPlayers(){if(____Classf5!==null){____Classf5.apply(this,arguments);}}
   Object.defineProperty(NumPlayers.prototype,"handleChange",{writable:true,configurable:true,value:function() {
     this.props.onChange(4 * React.findDOMNode(this.refs.numPlayers).value);
   }});
@@ -70,7 +70,7 @@ var ____ClasseN=React.Component;for(var ____ClasseN____Key in ____ClasseN){if(__
   }});
 ;
 
-var ____ClasseO=React.Component;for(var ____ClasseO____Key in ____ClasseO){if(____ClasseO.hasOwnProperty(____ClasseO____Key)){Player[____ClasseO____Key]=____ClasseO[____ClasseO____Key];}}var ____SuperProtoOf____ClasseO=____ClasseO===null?null:____ClasseO.prototype;Player.prototype=Object.create(____SuperProtoOf____ClasseO);Player.prototype.constructor=Player;Player.__superConstructor__=____ClasseO;function Player(){if(____ClasseO!==null){____ClasseO.apply(this,arguments);}}
+var ____Classf6=React.Component;for(var ____Classf6____Key in ____Classf6){if(____Classf6.hasOwnProperty(____Classf6____Key)){Player[____Classf6____Key]=____Classf6[____Classf6____Key];}}var ____SuperProtoOf____Classf6=____Classf6===null?null:____Classf6.prototype;Player.prototype=Object.create(____SuperProtoOf____Classf6);Player.prototype.constructor=Player;Player.__superConstructor__=____Classf6;function Player(){if(____Classf6!==null){____Classf6.apply(this,arguments);}}
   Object.defineProperty(Player.prototype,"handleChange",{writable:true,configurable:true,value:function() {
     this.props.onUserInput(this.props.num,
     React.findDOMNode(this.refs.textInput).value);
@@ -94,7 +94,7 @@ var ____ClasseO=React.Component;for(var ____ClasseO____Key in ____ClasseO){if(__
   }});
 ;
 
-var ____ClasseP=React.Component;for(var ____ClasseP____Key in ____ClasseP){if(____ClasseP.hasOwnProperty(____ClasseP____Key)){Players[____ClasseP____Key]=____ClasseP[____ClasseP____Key];}}var ____SuperProtoOf____ClasseP=____ClasseP===null?null:____ClasseP.prototype;Players.prototype=Object.create(____SuperProtoOf____ClasseP);Players.prototype.constructor=Players;Players.__superConstructor__=____ClasseP;function Players(){if(____ClasseP!==null){____ClasseP.apply(this,arguments);}}
+var ____Classf7=React.Component;for(var ____Classf7____Key in ____Classf7){if(____Classf7.hasOwnProperty(____Classf7____Key)){Players[____Classf7____Key]=____Classf7[____Classf7____Key];}}var ____SuperProtoOf____Classf7=____Classf7===null?null:____Classf7.prototype;Players.prototype=Object.create(____SuperProtoOf____Classf7);Players.prototype.constructor=Players;Players.__superConstructor__=____Classf7;function Players(){if(____Classf7!==null){____Classf7.apply(this,arguments);}}
   Object.defineProperty(Players.prototype,"render",{writable:true,configurable:true,value:function() {
     var players = _.map(_.range(this.props.numPlayers), function(n)  {return (
       React.createElement(Player, {key: n, num: n, name: this.props.names[n], onUserInput: this.props.onUserInput})
@@ -108,7 +108,7 @@ var ____ClasseP=React.Component;for(var ____ClasseP____Key in ____ClasseP){if(__
   }});
 ;
 
-var ____ClasseQ=React.Component;for(var ____ClasseQ____Key in ____ClasseQ){if(____ClasseQ.hasOwnProperty(____ClasseQ____Key)){Play[____ClasseQ____Key]=____ClasseQ[____ClasseQ____Key];}}var ____SuperProtoOf____ClasseQ=____ClasseQ===null?null:____ClasseQ.prototype;Play.prototype=Object.create(____SuperProtoOf____ClasseQ);Play.prototype.constructor=Play;Play.__superConstructor__=____ClasseQ;function Play(){if(____ClasseQ!==null){____ClasseQ.apply(this,arguments);}}
+var ____Classf8=React.Component;for(var ____Classf8____Key in ____Classf8){if(____Classf8.hasOwnProperty(____Classf8____Key)){Play[____Classf8____Key]=____Classf8[____Classf8____Key];}}var ____SuperProtoOf____Classf8=____Classf8===null?null:____Classf8.prototype;Play.prototype=Object.create(____SuperProtoOf____Classf8);Play.prototype.constructor=Play;Play.__superConstructor__=____Classf8;function Play(){if(____Classf8!==null){____Classf8.apply(this,arguments);}}
   Object.defineProperty(Play.prototype,"handlePlay",{writable:true,configurable:true,value:function() {
     this.props.onPress();
   }});
@@ -156,7 +156,7 @@ var ____ClasseQ=React.Component;for(var ____ClasseQ____Key in ____ClasseQ){if(__
   }});
 ;
 
-var ____ClasseR=React.Component;for(var ____ClasseR____Key in ____ClasseR){if(____ClasseR.hasOwnProperty(____ClasseR____Key)){Help[____ClasseR____Key]=____ClasseR[____ClasseR____Key];}}var ____SuperProtoOf____ClasseR=____ClasseR===null?null:____ClasseR.prototype;Help.prototype=Object.create(____SuperProtoOf____ClasseR);Help.prototype.constructor=Help;Help.__superConstructor__=____ClasseR;function Help(){if(____ClasseR!==null){____ClasseR.apply(this,arguments);}}
+var ____Classf9=React.Component;for(var ____Classf9____Key in ____Classf9){if(____Classf9.hasOwnProperty(____Classf9____Key)){Help[____Classf9____Key]=____Classf9[____Classf9____Key];}}var ____SuperProtoOf____Classf9=____Classf9===null?null:____Classf9.prototype;Help.prototype=Object.create(____SuperProtoOf____Classf9);Help.prototype.constructor=Help;Help.__superConstructor__=____Classf9;function Help(){if(____Classf9!==null){____Classf9.apply(this,arguments);}}
   Object.defineProperty(Help.prototype,"render",{writable:true,configurable:true,value:function( ) {
     var textStyle = {color: "black", textAlign: 'left'};
     var buttonStyle = {outline: 0, color : 'white', backgroundColor: 'transparent'};
@@ -180,9 +180,8 @@ var ____ClasseR=React.Component;for(var ____ClasseR____Key in ____ClasseR){if(__
                     "Press Play again for a new game with the same players." + ' ' +
                     "You can add or remove players before starting the game." + ' ' +
                     "To change the maximum number of players increase the" + ' ' +
-                    "number of rows," + ' ' +
-                    "4 players per row." + ' ' +
-                    "Press Reset to clear the player names."
+                    "number of rows, 4 players per row." + ' ' +
+                    "Press Reset to clear the player names and start over."
                   )
                 ), 
                 React.createElement("div", {className: "modal-footer"}, 
@@ -196,9 +195,9 @@ var ____ClasseR=React.Component;for(var ____ClasseR____Key in ____ClasseR){if(__
   }});
 
 
-var ____ClasseS=React.Component;for(var ____ClasseS____Key in ____ClasseS){if(____ClasseS.hasOwnProperty(____ClasseS____Key)){LotteryApp[____ClasseS____Key]=____ClasseS[____ClasseS____Key];}}var ____SuperProtoOf____ClasseS=____ClasseS===null?null:____ClasseS.prototype;LotteryApp.prototype=Object.create(____SuperProtoOf____ClasseS);LotteryApp.prototype.constructor=LotteryApp;LotteryApp.__superConstructor__=____ClasseS;
+var ____Classfa=React.Component;for(var ____Classfa____Key in ____Classfa){if(____Classfa.hasOwnProperty(____Classfa____Key)){LotteryApp[____Classfa____Key]=____Classfa[____Classfa____Key];}}var ____SuperProtoOf____Classfa=____Classfa===null?null:____Classfa.prototype;LotteryApp.prototype=Object.create(____SuperProtoOf____Classfa);LotteryApp.prototype.constructor=LotteryApp;LotteryApp.__superConstructor__=____Classfa;
   function LotteryApp(props) {
-    ____ClasseS.call(this,props);
+    ____Classfa.call(this,props);
     var anims = _.fill(Array(16), {anim: '', delay: '0s'});
     var cellColors = _.map(_.range(16), function()  {
       return ('#' + Math.floor(_.random(0.1, 0.9) * 16777215).toString(16))
