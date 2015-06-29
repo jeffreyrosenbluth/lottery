@@ -140,18 +140,61 @@ class Play extends React.Component {
             Reset
           </button>
         </div>
-        <div className="col-xs-offset-3 col-xs-1">
-          <p>Rows:</p>
+        <div className="col-xs-offset-1 col-xs-1">
+          <h4>Rows:</h4>
         </div>
         <div className="col-xs-1">
           <form id="numPlayers">
             <NumPlayers numPlayers={this.props.numPlayers} onChange={this.props.onNum}/>
           </form>
         </div>
+        <div className="col-xs-offset-2 col-xs-1">
+          <Help/>
+        </div>
     </div>
     );
   }
 };
+
+class Help extends React.Component {
+  render () {
+    var textStyle = {color: "black", textAlign: 'left'};
+    var buttonStyle = {outline: 0, color : 'white', backgroundColor: 'transparent'};
+    return (
+      <div>
+        <button type="button" className="btn btn-lg btn-default" data-toggle="modal" data-target="#myModal" style={buttonStyle}>
+          Help
+        </button>
+        <div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                  <h3 className="modal-title" id="myModalLabel" style={textStyle}>Instructions</h3>
+                </div>
+                <div className="modal-body" style={textStyle}>
+                  <h4>
+                    Enter player names then press Play.
+                    Press Play again for a new game with the same players.
+                    You can add or remove players before starting the game.
+                    To change the maximum number of players increase the
+                    number of rows,
+                    4 players per row.
+                    Press Reset to clear the player names.
+                  </h4>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 class LotteryApp extends React.Component {
   constructor(props) {
