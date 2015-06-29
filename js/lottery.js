@@ -64,12 +64,14 @@ class NumPlayers extends React.Component {
   render() {
     var inputStyle = { backgroundColor: 'transparent',
                        color: 'white',
-                       height: '45px',
-                       width:  '90px'};
+                      //  height: '45px',
+                      //  width:  '90px'
+                       };
 
     return (
       <div className       = "form-group">
-        <input className   = "form-control" type="text"
+        <label for="rows">Rows</label>
+        <input className   = "form-control" type="text" id="rows"
                placeholder = "16"
                id          = "num"
                ref         = "numPlayers"
@@ -134,16 +136,16 @@ class Play extends React.Component {
 
     return (
       <div className="row">
-        <div className="col-xs-2">
+        <div className="col-xs-1">
           <button type="button"
                   className="btn btn-default btn-lg"
                   id="play"
                   style={buttonStyle}
                   onMouseUp={this.handlePlay.bind(this)}>
-            Play - Replay
+            Play
           </button>
         </div>
-        <div className="col-xs-2">
+        <div className="col-xs-offset-1 col-xs-2">
           <button type="button"
                   className="btn btn-default btn-lg"
                   id="reset"
@@ -152,7 +154,7 @@ class Play extends React.Component {
             Reset
           </button>
         </div>
-        <div className="col-xs-2">
+        <div className="col-xs-offset-4 col-xs-1">
           <form id="numPlayers">
             <NumPlayers numPlayers={this.props.numPlayers} onChange={this.props.onNum}/>
           </form>
