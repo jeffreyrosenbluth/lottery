@@ -10,8 +10,8 @@ var ____Classf2=React.Component;for(var ____Classf2____Key in ____Classf2){if(__
       { backgroundColor:          this.props.bgcolor,
         WebkitAnimationDelay:     this.props.name ? this.props.animData.delay : '0s',
         animationDelay:           this.props.name ? this.props.animData.delay : '0s',
-        WebkitAnimationDuration: '2s',
-        animationDuration:       '2s'
+        WebkitAnimationDuration: '10s',
+        animationDuration:       '10s'
       };
     var classes = "col-xs-3 animated " + this.props.animData.anim;
 
