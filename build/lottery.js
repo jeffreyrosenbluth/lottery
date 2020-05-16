@@ -10,8 +10,8 @@ var ____Classf2=React.Component;for(var ____Classf2____Key in ____Classf2){if(__
       { backgroundColor:          this.props.bgcolor,
         WebkitAnimationDelay:     this.props.name ? this.props.animData.delay : '0s',
         animationDelay:           this.props.name ? this.props.animData.delay : '0s',
-        WebkitAnimationDuration: '10s',
-        animationDuration:       '10s'
+        WebkitAnimationDuration: '5s',
+        animationDuration:       '5s'
       };
     var classes = "col-xs-3 animated " + this.props.animData.anim;
 
@@ -252,7 +252,7 @@ var ____Classfa=React.Component;for(var ____Classfa____Key in ____Classfa){if(__
     boxAnims[_.last(alive)] = {anim: 'tada', delay: 2 * _.size(alive) + 's'};
 
     _.forEach(_.initial(alive), function(n)  {
-      boxAnims[n] = {anim: animMix[idx % 31], delay: 2 + 2 * idx + 's'};
+      boxAnims[n] = {anim: animMix[idx % 31], delay: 5 + 5 * idx + 's'};
       idx += 1;
     });
 
