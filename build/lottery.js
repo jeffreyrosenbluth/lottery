@@ -249,7 +249,7 @@ var ____Classfa=React.Component;for(var ____Classfa____Key in ____Classfa){if(__
     alive = _.shuffle(alive);
     dead  = _.shuffle(dead);
 
-    boxAnims[_.last(alive)] = {anim: 'tada', delay: 2 * _.size(alive) + 's'};
+    boxAnims[_.last(alive)] = {anim: 'tada', delay: 5 * _.size(alive) + 's'};
 
     _.forEach(_.initial(alive), function(n)  {
       boxAnims[n] = {anim: animMix[idx % 31], delay: 5 + 5 * idx + 's'};
