@@ -255,7 +255,7 @@ var ____Classfa=React.Component;for(var ____Classfa____Key in ____Classfa){if(__
       boxAnims[n] = {anim: animMix[idx % 31], delay: 2 + 2 * idx + 's'};
       idx += 1;
     });
-ƒ
+
     _.forEach(dead, function(n)  {
        boxAnims[n] = {anim: 'fadeOut', delay: '0s'};
     });
