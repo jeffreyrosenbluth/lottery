@@ -29,11 +29,11 @@
   background-color: transparent;
 }
 
-.a {
+a {
   color: white;
 }
 
-#index h1 {
+h1 {
   margin: 30px;
   padding: 10px;
   color: white;
