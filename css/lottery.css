@@ -30,7 +30,7 @@
 }
 
 a {
-  color: white;
+  color: lightblue;
   font-size: 30px;
   margin: 30px;
   padding: 10px;
@@ -43,6 +43,7 @@ h1 {
 }
 
 h2 {
+  font-size: 224px
   margin: 30px;
   padding: 10px;
   color: white;
